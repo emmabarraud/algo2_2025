@@ -1,0 +1,11 @@
+condiciones de la materia
+promocion: teorico practico
+regularidad: dos parciales de lab aprobados (A/D), se puede recuperar 1 examen final regular no rinde lab. 
+libre: si desaprueba los parciales del lab.
+
+parcial 1: labs 1 2 3
+parcial 2: labs 4 5 6     
+
+abstraccion, coding style
+modularizar programas en c (distintos archivos para un solo codigo)
+
