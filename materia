@@ -13,3 +13,13 @@ modularizar programas en c (distintos archivos para un solo codigo)
 preprocesadoor -> todo lo que tenga #
 
 
+//main.c
+#include <stdio.h>
+
+int main() {
+    printf("Hola mundo!");
+    return 0;
+}
+
+//compilamos
+gcc -o hola_mundo main.c
