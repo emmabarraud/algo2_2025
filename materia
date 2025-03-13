@@ -9,3 +9,7 @@ parcial 2: labs 4 5 6
 abstraccion, coding style
 modularizar programas en c (distintos archivos para un solo codigo)
 
+/el compilador tiene etapas
+preprocesadoor -> todo lo que tenga #
+
+
