@@ -14,7 +14,7 @@ preprocesadoor -> todo lo que tenga #
 
 
 //main.c
-#include <stdio.h>
+#include <stdio.h>  // librerias de funciones de c
 
 int main() {
     printf("Hola mundo!");
@@ -22,4 +22,8 @@ int main() {
 }
 
 //compilamos
-gcc -o hola_mundo main.c
+gcc -o hola_mundo main.c  //sin flags
+gcc -Wall -Wextra -Werror -pedantic -std=c99 -o holamundo main.c //con flags
+
+//ejecutamos
+./holamundo
