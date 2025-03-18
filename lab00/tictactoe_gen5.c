@@ -3,7 +3,7 @@
 #include <stdbool.h> /* Tipo bool             */
 #include <locale.h>  /* Para caracteres especiales */
 
-#define SIZE 4  
+#define SIZE 6  
 #define CELL_MAX (SIZE * SIZE - 1)
 
 void print_sep(int length) {

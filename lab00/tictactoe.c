@@ -10,7 +10,6 @@ void print_sep(int length) { //separador de filas
     printf("\t ");
     for (int i=0; i < length;i++) printf("................");
     printf("\n");
-
 }
 
 void print_board(char board[3][3]) {
