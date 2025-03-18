@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <locale.h> // busque en google como hacer para leer caracteres especiales como ñ
 
 struct bound_data {
     bool is_upperbound;
@@ -11,100 +11,73 @@ struct bound_data {
 };
 
 struct bound_data check_bound(int value, int arr[], unsigned int length) {
+    struct bound_data res = {false, false, false, 0};
+    
+    if (length == 0) return res; // arreglo vacío
 
-    struct bound_data res = {false, false, false, 0}; // inicializo todas las variables en false
-
-    unsigned int i = 0; //variables auxiliares
-    int min = arr[0]; // empiezo en el primer elemento del arreglo
-    int max = arr[0]; 
-
-    while (i < length) {
-        if (arr[i] < min) {
-            min = arr[i];
-        }
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-
+    unsigned int i;
+    int min = arr[0], max = arr[0];
+    
+    for (i = 0; i < length; ++i) {
+        if (arr[i] < min) min = arr[i];
+        if (arr[i] > max) max = arr[i];
         if (value == arr[i]) {
             res.exists = true;
             res.where = i;
         }
-        ++i;
     }
 
-    res.is_upperbound = (value >= max); // asigno valores de verdad, comparo el valor dado con el valor calculado en el while
+    res.is_upperbound = (value >= max);
     res.is_lowerbound = (value <= min);
-
     return res;
 }
+
 int main(void) {
+    setlocale(LC_ALL, "es_ES.UTF-8"); // busque en google como hacer para leer caracteres especiales como ñ
 
     int tam;
-    printf("\nIngrese el tamano del arreglo: ");
+    printf("Ingrese el tamano del arreglo: ");
     scanf("%d", &tam);
 
-    int a[tam];
-
-    int n=0;
-    while (n<tam) {
-        printf("\nIngrese el elemento numero %d del arreglo: \n", n);
-        scanf("%d", &a[n]);
-        ++n;
+    if (tam <= 0) {
+        printf("Error: El tamaño del arreglo debe ser mayor que 0.\n");
+        return EXIT_FAILURE;
     }
 
-    printf("El arreglo es: A[%d]={", tam);
-    
-    n=0;
-    while (n<tam) {
-        if(n < tam - 1){
-            printf("%d, ", a[n]);
-        }else{
-            printf("%d", a[n]); 
-        }
-        ++n;
+    int a[tam];
+    for (int n = 0; n < tam; ++n) {
+        printf("Ingrese el elemento numero %d del arreglo: ", n);
+        scanf("%d", &a[n]);
+    }
+
+    printf("El arreglo es: A[%d] = {", tam);
+    for (int n = 0; n < tam; ++n) {
+        printf("%d%s", a[n], (n < tam - 1) ? ", " : "");
     }
     printf("}\n\n");
 
     int value;
-    printf("\nIngrese el numero que quiere usar: ");
+    printf("Ingrese el numero que quiere usar: ");
     scanf("%d", &value);
 
     struct bound_data result = check_bound(value, a, tam);
-    int lugar = result.where;
-/*    if ((result.exists == true) && (result.is_upperbound == true)) {
-        printf("El valor ingresado '%d' es el maximo de la lista\n");
-     };
-    if ((result.exists == true) && (result.is_lowerbound == true)) {
-        printf ("El valor ingresado '%d' es el maximo de la lista\n");
-    };
-    if (result.is_lowerbound == true && result.exists == false) {
-        printf ("El valor ingresado '%d' es la cota menor\n");
-    };
-    if (result.is_upperbound == true && result.exists == false) {
-        printf ("El valor ingresado '%d' es la cota mayor\n");
-    };
-MAS OPTIMIZADO
-*/
-
-
-    if (result.exists) { //resultado.exists es verdadero
+    
+    if (result.exists) {
+        printf("El valor ingresado '%d' existe en la lista en la posición %d.\n", value, result.where);
         if (result.is_upperbound) {
-            printf("El valor ingresado '%d' es el máximo de la lista\n El lugar en el que se encuentra es %d", value, lugar);
-        } 
-        if (result.is_lowerbound) {
-            printf("El valor ingresado '%d' es el mínimo de la lista\n El lugar en el que se encuentra es %d", value, lugar);
+            printf("Es el máximo de la lista.\n");
+        } else if (result.is_lowerbound) {
+            printf("Es el mínimo de la lista.\n");
         }
-    } else {  //resultado.exists es falso
+    } else {
         if (result.is_lowerbound) {
-            printf("El valor ingresado '%d' es la cota menor (no esta en el arreglo)\n", value);
-        } 
-        if (result.is_upperbound) {
-            printf("El valor ingresado '%d' es la cota mayor (no esta en el arreglo)\n", value);
+            printf("El valor ingresado '%d' es cota menor (no está en el arreglo).\n", value);
+        } else if (result.is_upperbound) {
+            printf("El valor ingresado '%d' es cota mayor (no está en el arreglo).\n", value);
+        } else {
+            printf("El valor ingresado '%d' no existe en la lista.\n", value);
         }
     }
-    
 
     return EXIT_SUCCESS;
 }
-

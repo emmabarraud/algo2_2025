@@ -4,7 +4,7 @@
 #include <locale.h> // busque en google como hacer para leer caracteres especiales como ñ
 #include <assert.h>  /* assert() */
 
-#define CELL_MAX (3 * 3 - 1)
+#define CELL_MAX (4 * 4 - 1)
 
 void print_sep(int length) { //separador de filas
     printf("\t ");
@@ -13,45 +13,45 @@ void print_sep(int length) { //separador de filas
 
 }
 
-void print_board(char board[3][3]) {
+void print_board(char board[4][4]) {
     int cell = 0;
 
-    print_sep(3);
-    for (int row = 0; row < 3; ++row) {
-        for (int column = 0; column < 3; ++column) {
+    print_sep(4);
+    for (int row = 0; row < 4; ++row) {
+        for (int column = 0; column < 4; ++column) {
             printf("\t | %d: %c ", cell, board[row][column]); //separador de columnas
             ++cell;
         }
         printf("\t | \n");
-        print_sep(3);
+        print_sep(4);
     }
 }
 
-char get_winner(char board[3][3]){
+char get_winner(char board[4][4]){
     char winner = '-';
-    for (int i = 0; i < 3; i++) { //recorre para verificar filas y columnas
-        if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '-') { //filas
+    for (int i = 0; i < 4; i++) { //recorre para verificar filas y columnas
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][2] == board[i][3] && board[i][0] != '-') { //filas
             winner = board[i][0];
         }
-        if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != '-') { //columnas
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[2][i] == board[3][i] && board[0][i] != '-') { //columnas
             winner = board[0][i];
         }
     }
 //no hace falta recorrer ya que solo hay dos diagonales
-    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-') { //diagonales board[0][0] != '-' es que no este vacio
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[2][2] == board[3][3] && board[0][0] != '-') { //diagonales board[0][0] != '-' es que no este vacio
         winner = board[0][0];
     }
-    if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '-') {
-        winner = board[0][2];
+    if (board[0][3] == board[1][2] && board[1][2] == board[2][1] && board[3][0] == board[2][1] && board[0][2] != '-') {
+        winner = board[0][3];
     }
     return winner; //si nadie gana de ninguna forma, devuelve winner que es '-'
 }
 
-bool has_free_cell(char board[3][3])
+bool has_free_cell(char board[4][4])
 {
     bool free_cell = false;
-    for (int i = 0; i < 3; i++) { //filas
-        for (int j = 0; j < 3; j++) { //columnas
+    for (int i = 0; i < 4; i++) { //filas
+        for (int j = 0; j < 4; j++) { //columnas
             if (board[i][j] == '-') {
                 free_cell = true;
             }
@@ -62,12 +62,13 @@ bool has_free_cell(char board[3][3])
 
 int main(void){
     setlocale(LC_ALL, "es_ES.UTF-8"); // busque en google como hacer para leer caracteres especiales como ñ
-    printf("TicTacToe [InCoMpLeTo :'(]\n");
+    printf("TicTacToe Incompleto 4x4\n");
 
-    char board[3][3] = {
-        { '-', '-', '-' },
-        { '-', '-', '-' },
-        { '-', '-', '-' }
+    char board[4][4] = {
+        { '-', '-', '-' , '-' },
+        { '-', '-', '-' , '-' },
+        { '-', '-', '-' , '-' },
+        { '-', '-', '-' , '-' }
     };
 
     char turn = 'X';
@@ -83,8 +84,8 @@ int main(void){
             exit(EXIT_FAILURE);
         }
         if (cell >= 0 && cell <= CELL_MAX) {
-            int row = cell / 3;
-            int colum = cell % 3;
+            int row = cell / 4;
+            int colum = cell % 4;
             if (board[row][colum] == '-') {
                 board[row][colum] = turn;
                 turn = turn == 'X' ? 'O' : 'X';
