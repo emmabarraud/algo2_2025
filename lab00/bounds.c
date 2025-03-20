@@ -13,10 +13,11 @@ struct bound_data {
 struct bound_data check_bound(int value, int arr[], unsigned int length) {
     struct bound_data res = {false, false, false, 0};
     
-    if (length == 0) return res; // arreglo vacío
 
     unsigned int i;
-    int min = arr[0], max = arr[0];
+    
+    int min = arr[0];
+    int max = arr[0];
     
     for (i = 0; i < length; ++i) {
         if (arr[i] < min) min = arr[i];
@@ -29,11 +30,12 @@ struct bound_data check_bound(int value, int arr[], unsigned int length) {
 
     res.is_upperbound = (value >= max);
     res.is_lowerbound = (value <= min);
+
     return res;
 }
 
 int main(void) {
-    setlocale(LC_ALL, "es_ES.UTF-8"); // busque en google como hacer para leer caracteres especiales como ñ
+    setlocale(LC_ALL, "es_ES.UTF-8"); //  como hacer para leer caracteres especiales como ñ
 
     int tam;
     printf("Ingrese el tamano del arreglo: ");
@@ -63,11 +65,14 @@ int main(void) {
     struct bound_data result = check_bound(value, a, tam);
     
     if (result.exists) {
-        printf("El valor ingresado '%d' existe en la lista en la posición %d.\n", value, result.where);
+        printf("El valor ingresado '%d' existe en la lista en la posición %d, y ", value, result.where); //lo primero es imprimir el lugar si es que esta
         if (result.is_upperbound) {
-            printf("Es el máximo de la lista.\n");
+            printf("es el máximo de la lista.\n");
         } else if (result.is_lowerbound) {
-            printf("Es el mínimo de la lista.\n");
+            printf("es el mínimo de la lista.\n");
+        }
+        if (result.is_upperbound == false && result.is_lowerbound == false) {
+            printf("el valor no es máximo ni mínimo.\n");
         }
     } else {
         if (result.is_lowerbound) {

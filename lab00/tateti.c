@@ -3,7 +3,7 @@
 #include <stdbool.h> /* Tipo bool             */
 #include <locale.h>  /* Para caracteres especiales */
 
-#define SIZE 5  
+#define SIZE 3
 #define CELL_MAX (SIZE * SIZE - 1)
 
 void print_sep(int length) {
@@ -16,9 +16,9 @@ void print_board(char board[SIZE][SIZE]) {
     int cell = 0;
 
     print_sep(SIZE);
-    for (int row = 0; row < SIZE; ++row) {
-        for (int column = 0; column < SIZE; ++column) {
-            printf("\t | %d: %c ", cell, board[row][column]);
+    for (int fila = 0; fila < SIZE; ++fila) {
+        for (int columna = 0; columna < SIZE; ++columna) {
+            printf("\t | %d: %c ", cell, board[fila][columna]);
             ++cell;
         }
         printf("\t | \n");
@@ -28,24 +28,35 @@ void print_board(char board[SIZE][SIZE]) {
 
 char get_winner(char board[SIZE][SIZE]) {
     char winner = '-';
-    
-    for (int i = 0; i < SIZE; i++) {
-        bool row_win = true, col_win = true;
-        for (int j = 1; j < SIZE; j++) {
+    int i = 1;
+    bool row_win = false;
+    bool col_win = false;
+
+    while (i<SIZE && (row_win==false || col_win==false)) {
+        int j = 1;
+        while (j<SIZE) {
             if (board[i][j] != board[i][0] || board[i][0] == '-') row_win = false;
             if (board[j][i] != board[0][i] || board[0][i] == '-') col_win = false;
+            ++j;
         }
-        if (row_win) return board[i][0];
-        if (col_win) return board[0][i];
+
+    if (row_win) return board[i][0]; //fila gana si encuentra que todas los elementos de la fila i, son iguales y no hay ninguno vacio
+    if (col_win) return board[0][i];
+    ++i;
+
     }
     
-    bool diagizq_win = true, diagder_win = true;
-    for (int i = 1; i < SIZE; i++) {
+    i = 1;
+    bool diagizq_win = false;
+    bool diagder_win = false;
+
+    while (i<SIZE && (diagder_win == false || diagizq_win == false)) {
         if (board[i][i] != board[0][0] || board[0][0] == '-') diagizq_win = false;
-        if (board[i][SIZE - i - 1] != board[0][SIZE - 1] || board[0][SIZE - 1] == '-') diagder_win = false;
+        if (board[i][SIZE - i - 1] != board[0][SIZE - 1] || board[0][SIZE - 1] == '-') diagder_win = false; 
     }
-    if (diagizq_win) return board[0][0];
-    if (diagder_win) return board[0][SIZE - 1];
+
+    if (diagizq_win) return board[0][0]; //celda de la primer columna primer fila 
+    if (diagder_win) return board[0][SIZE - 1]; //celda de la ultima columna primer fila
     
     return winner;
 }

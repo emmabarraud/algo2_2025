@@ -61,7 +61,7 @@ bool has_free_cell(char board[3][3])
 
 int main(void){
     setlocale(LC_ALL, "es_ES.UTF-8"); // busque en google como hacer para leer caracteres especiales como ñ
-    printf("TicTacToe [InCoMpLeTo :'(]\n");
+    printf("\nTateti Incompleto\n");
 
     char board[3][3] = {
         { '-', '-', '-' },
@@ -72,7 +72,7 @@ int main(void){
     char turn = 'X';
     char winner = '-';
     int cell = 0;
-    while (winner == '-' && has_free_cell(board)) {
+    while (winner == '-' && has_free_cell(board)) { //si todavia no hay ganador y todavia hay celdas vacias
         print_board(board);
         printf("\nTurno %c - Elija posición (número del 0 al %d): ", turn,
                CELL_MAX);
