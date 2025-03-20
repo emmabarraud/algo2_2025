@@ -27,3 +27,76 @@ gcc -Wall -Wextra -Werror -pedantic -std=c99 -o holamundo main.c //con flags
 
 //ejecutamos
 ./holamundo
+
+
+//lab 1 -> ordenacion
+
+cadenas/strings/secuenciasdecaracteres
+
+typedef
+
+Requerimientos
+Compilar con los flags de la materia:
+	$ gcc -Wall -Werror -Wextra -pedantic -std=c99 …
+Seguir las guías de estilo
+Prohibido usar break, continue y goto!!
+Prohibido usar return a la mitad de una función.
+
+ toda cadena en C debe terminar con el caracter '\0'
+ char cadena[5]={'h', 'o', 'l', 'a', '\0'};
+  no olvidarse de poner el '\0' final ya que de lo contrario printf() va a recorrer a cadena[] por fuera de su rango hasta que aparezca un '\0' y al acceder a memoria inválida se producirá eventualmente una violación de segmento (segmentation fault). 
+
+
+Otra forma más cómoda de armar el string con la palabra “hola”  es hacer algo como:
+
+char cadena[10]="hola";
+printf("cadena: %s\n", cadena);
+
+En este caso el caracter '\0' se agrega implícitamente en el arreglo cadena. Para no tener que contar la cantidad de caracteres que necesitamos se puede definir una cadena directamente haciendo:
+
+char cadena[]="hola mundo!";
+printf("cadena: %s\n", cadena);
+
+el contenido del array es el siguiente:
+cadena:
+'h'
+'o'
+'l'
+'a'
+' '
+'m'
+'u'
+'n'
+'d'
+'o'
+'!'
+'\0'
+
+
+  char cadena[]="hola mundo!";
+cadena = "chau mundo!"; -> tiene el \0 al final
+printf("cadena: %s\n", cadena);
+
+%s se usa para imprimir la cadena
+
+El resultado va a ser un error de compilación. 
+
+typedef <tipo-existente> <nuevo-tipo>;
+# define FIXSTRING_MAX 100
+typedef char fixtring [FIXSTRING_MAX];
+
+Lo que se hace aquí es definir el tipo fixstring como el tipo de los arreglos de elementos de tipo char que tienen una capacidad de FIXSTRING_MAX elementos. O sea que si declaramos
+fixstring s;
+
+es lo mismo que declarar
+char s[FIXSTRING_MAX];
+
+Dentro de la carpeta ej0 van a encontrar los archivos fixstring.h, fixstring.c y main.c. Deben implementar en fixstring.c las funciones:
+unsigned int fstring_length(fixstring s);
+
+bool fstring_eq(fixstring s1, fixstring s2);
+
+bool fstring_less_eq(fixstring s1, fixstring s2);
+
+
+

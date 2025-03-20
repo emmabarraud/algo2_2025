@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fixstring.h> //ejemplo ->
+//.c definiciones
+//.h declaraciones 
+//en los .c incluyo los .h, no al reves
 
 #include "fixstring.h"
 

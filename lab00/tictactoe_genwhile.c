@@ -5,7 +5,7 @@
 
 //Prohibido usar return a la mitad de una función.
 
-#define SIZE 3
+#define SIZE 4
 #define CELL_MAX (SIZE * SIZE - 1)
 
 void print_sep(int length) {
@@ -31,8 +31,9 @@ void print_board(char board[SIZE][SIZE]) {
 char get_winner(char board[SIZE][SIZE]) {
     char winner = '-';
     int i = 0;
+    bool encontre_ganador = false;
 
-    while (i < SIZE) {
+    while (i < SIZE && !encontre_ganador) {
         bool row_win = true, col_win = true;
         int j = 1;
         while (j < SIZE) {
@@ -41,31 +42,40 @@ char get_winner(char board[SIZE][SIZE]) {
             j++;
         }
 
-        if (row_win) return board[i][0];  
-        if (col_win) return board[0][i];  
+        if (row_win == true) {
+            winner = board[i][0];
+            encontre_ganador = true;
+        }  
+
+        if (col_win == true) {
+            winner = board[0][i];
+            encontre_ganador = true;  
         i++;
+        }
     }
 
-    i = 1;
-    bool diagizq_win = true, diagder_win = true;
-    while (i < SIZE) {
-        if (board[i][i] != board[0][0] || board[0][0] == '-') diagizq_win = false;
-        if (board[i][SIZE - i - 1] != board[0][SIZE - 1] || board[0][SIZE - 1] == '-') diagder_win = false;  
-        i++;
+
+    if (!encontre_ganador) { //avanza si no encontre ganador
+        i = 1;
+        bool diagizq_win = true, diagder_win = true;
+        while (i < SIZE) {
+            if (board[i][i] != board[0][0] || board[0][0] == '-') diagizq_win = false;
+            if (board[i][SIZE - i - 1] != board[0][SIZE - 1] || board[0][SIZE - 1] == '-') diagder_win = false;  
+            i++;
+        }
+
+        if (diagizq_win == true) winner = board[0][0];  
+        if (diagder_win == true) winner = board[0][SIZE - 1];  
     }
-
-    if (diagizq_win) return board[0][0];  
-    if (diagder_win) return board[0][SIZE - 1];  
-
-    return winner;  
-}
+    return winner;
+}   
 
 bool has_free_cell(char board[SIZE][SIZE]) {
 
     int i= 0;
-    int j = 0;
-    while (i< SIZE) {
-        while (j<SIZE) {
+    while (i < SIZE) {
+        int j = 0;
+        while (j < SIZE) {
             if (board[i][j] == '-') return true;
             ++j;
         }
