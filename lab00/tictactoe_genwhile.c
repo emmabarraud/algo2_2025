@@ -5,7 +5,7 @@
 
 //Prohibido usar return a la mitad de una función.
 
-#define SIZE 4
+#define SIZE 5
 #define CELL_MAX (SIZE * SIZE - 1)
 
 void print_sep(int length) {
@@ -50,8 +50,8 @@ char get_winner(char board[SIZE][SIZE]) {
         if (col_win == true) {
             winner = board[0][i];
             encontre_ganador = true;  
-        i++;
         }
+    i++;
     }
 
 
@@ -71,17 +71,17 @@ char get_winner(char board[SIZE][SIZE]) {
 }   
 
 bool has_free_cell(char board[SIZE][SIZE]) {
-
+bool free_cell = false;
     int i= 0;
-    while (i < SIZE) {
+    while (i < SIZE && !free_cell) {
         int j = 0;
         while (j < SIZE) {
-            if (board[i][j] == '-') return true;
+            if (board[i][j] == '-') free_cell = true;
             ++j;
         }
         ++i;
     }
-return false;
+return free_cell;
 }
 
 int main(void) {
