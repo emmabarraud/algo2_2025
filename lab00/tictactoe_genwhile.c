@@ -3,6 +3,8 @@
 #include <stdbool.h> /* Tipo bool             */
 #include <locale.h>  /* Para caracteres especiales */
 
+//Prohibido usar return a la mitad de una función.
+
 #define SIZE 3
 #define CELL_MAX (SIZE * SIZE - 1)
 
