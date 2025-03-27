@@ -13,32 +13,40 @@ bool fstring_eq(fixstring s1, fixstring s2) {
     unsigned int i = 0;
     bool valor = true;
 
-    if (fstring_length(s1) == fstring_length(s2) ) valor = true;
-
-    while (i < FIXSTRING_MAX) {
-        if ( s1[i] != s2[i]) valor = false;
-        ++i;
+    if (fstring_length(s1) == fstring_length(s2) ) {
+        valor = true;
     }
 
+    while (i < FIXSTRING_MAX) {
+        if ( s1[i] != s2[i]) {
+            valor = false;
+        }
+            ++i;
+    }
 
     return valor;
 }
 
 bool fstring_less_eq(fixstring s1, fixstring s2) {
     unsigned int i = 0;
-    bool valor = true;  
-    while (i < FIXSTRING_MAX && s1[i] != '\0' && s2[i] != '\0') {
-        if (s1[i] > s2[i]) valor = false; 
-        ++i;
-    }
+    bool valor = true; 
+    bool frene = true;
 
-    if (fstring_length(s1) != fstring_length(s2)){
-        if (s1[i] == '\0' && s2[i] != '\0') {
-            valor = true;  
-        } else if (s1[i] != '\0' && s2[i] == '\0') {
-            valor = false;  
+    while (s1[i] != '\0' && s2[i] != '\0' && frene && i < FIXSTRING_MAX) {
+
+        if (s1[i] != s2[i]) {
+            frene = false ; 
+         if (s1[i] < s2[i]) {
+            valor = true ; 
+        } else {
+            valor = false;
         }
+        }
+    i++;
     }
 
-    return valor;
-}
+        if (frene && fstring_length(s1) > fstring_length(s2)) {
+            valor = false;
+        }
+        return valor;
+    }
