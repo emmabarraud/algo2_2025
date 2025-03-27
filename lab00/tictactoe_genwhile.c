@@ -5,7 +5,7 @@
 
 //Prohibido usar return a la mitad de una función.
 
-#define SIZE 5
+#define SIZE 3
 #define CELL_MAX (SIZE * SIZE - 1)
 
 void print_sep(int length) {

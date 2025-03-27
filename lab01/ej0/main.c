@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fixstring.h> //ejemplo ->
-//.c definiciones
-//.h declaraciones 
-//en los .c incluyo los .h, no al reves
 
 #include "fixstring.h"
 
 #define N_WORDS 4
 
 int main(void) {
-    fixstring words[N_WORDS]={"hola", "mundo", "auto","automovil"};
+    fixstring words[N_WORDS]={"hola", "mundo", "a",""};
 
     printf("Probando fstring_length()\n"
            "-------------------------\n\n");
