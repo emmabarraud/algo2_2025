@@ -1,3 +1,4 @@
+//Implementaciones de las funciones de la librería array_helpers
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -5,7 +6,7 @@
 
 void array_copy(int copy[], int array[], unsigned int length) {
     for (unsigned int i = 0u; i < length; ++i) {
-        copy[i] = array[i];
+        copy[i] = array[i]; //copia los elem de arr copy al arr array
     }
 }
 
@@ -18,6 +19,9 @@ unsigned int array_value_count(int a[], unsigned int length, int value) {
     }
     return count;
 }
+
+/*La función array_value_count cuenta cuántas veces aparece un valor específico (value) en un arreglo de enteros (a) de tamaño length.
+*/
 
 void array_dump(int a[], unsigned int length) {
     fprintf(stdout, "%u\n", length);

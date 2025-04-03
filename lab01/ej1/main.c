@@ -1,3 +1,4 @@
+//Programa principal que carga un array de números, luego lo ordena con la función insertion_sort() y finalmente comprueba que el arreglo sea permutación ordenada del que se cargó inicialmente
 /* First, the standard lib includes, alphabetically ordered */
 #include <assert.h>
 #include <stdio.h>

@@ -1,3 +1,4 @@
+//Prototipo de la función insertion_sort() y su descripción
 #ifndef _SORT_H
 #define _SORT_H
 

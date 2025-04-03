@@ -1,3 +1,5 @@
+//Prototipos y descripciones de la funciones auxiliares para manipular arreglos.
+
 #ifndef _ARRAY_HELPERS_H
 #define _ARRAY_HELPERS_H
 

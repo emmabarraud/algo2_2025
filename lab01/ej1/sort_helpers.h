@@ -1,3 +1,4 @@
+//Prototipos y descripciones de las funciones goes_before(), swap() y array_is_sorted()
 #ifndef _SORT_HELPERS_H
 #define _SORT_HELPERS_H
 
