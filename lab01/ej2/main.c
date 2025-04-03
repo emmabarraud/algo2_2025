@@ -54,6 +54,9 @@ int main(int argc, char *argv[]) {
     /* parse the file to fill the array and obtain the actual length */
     unsigned int length = array_from_file(array, MAX_SIZE, filepath);
 
+    quick_sort(array,length);
+
+    
     /* create a copy of the array, to do some checks later */
     int copy[MAX_SIZE];
     array_copy(copy, array, length);
@@ -66,5 +69,6 @@ int main(int argc, char *argv[]) {
 
     /* check if it is a permutation of original */
     assert(array_is_permutation_of(copy, array, length));
+
     return EXIT_SUCCESS;
 }
