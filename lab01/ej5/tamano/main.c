@@ -5,11 +5,12 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "array_helpers.h"
+#include "fixstring.h"
 #include "sort_helpers.h"
 #include "sort.h"
 
 /* Maximum allowed length of the array */
-static const unsigned int MAX_SIZE = 100000u;
+static const unsigned int MAX_SIZE = 1000u;
 
 void print_help(char *program_name) {
     /* Print the usage help of this program. */
@@ -49,16 +50,16 @@ int main(int argc, char *argv[]) {
     filepath = parse_filepath(argc, argv);
 
     /* create an array of MAX_SIZE elements */
-    int array[MAX_SIZE];
+    fixstring array[MAX_SIZE];
 
     /* parse the file to fill the array and obtain the actual length */
     unsigned int length = array_from_file(array, MAX_SIZE, filepath);
 
     /* create a copy of the array, to do some checks later */
-    int copy[MAX_SIZE];
+    fixstring copy[MAX_SIZE];
     array_copy(copy, array, length);
 
-    quick_sort(array,length);
+    quick_sort(array, length);
 
     /* show the ordered array in the screen */
     array_dump(array, length);
@@ -68,6 +69,5 @@ int main(int argc, char *argv[]) {
 
     /* check if it is a permutation of original */
     assert(array_is_permutation_of(copy, array, length));
-
     return EXIT_SUCCESS;
 }

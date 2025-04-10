@@ -12,7 +12,7 @@ static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
 
     if (der> izq) {
         ppiv = partition(a,izq,der);
-        if (ppiv != 0) quick_sort_rec(a,izq,ppiv-1); //si le restas 1 a 0 unsigned, se va al mas grande
+        if (ppiv != 0) quick_sort_rec(a,izq,ppiv-1); //si le restas 1 a 0 unsigned, se va al mas grande por eso lo ponemos distinto a 0
         quick_sort_rec(a,ppiv+1,der);
     }
 }
