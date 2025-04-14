@@ -15,7 +15,7 @@ void responderPregunta() {
         int respuesta = rand() % 2;
 
         if (respuesta == 0) {
-            printf("Sí\n");
+            printf("Sí,Putisima \n");
         } else {
             printf("No\n");
         }
