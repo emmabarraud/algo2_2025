@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdbool.h": "c",
+			"stdio.h": "c",
+			"stdlib.h": "c",
+			"sort_helpers.h": "c",
+			"array_helpers.h": "c"
+		},
+		"github.copilot.enable": {
+			"*": false,
+			"plaintext": false,
+			"markdown": false,
+			"scminput": false
+		}
+	}
+}

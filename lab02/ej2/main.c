@@ -9,7 +9,7 @@ int main(void) {
 
     result = cima(a, length);
 
-    printf("Resultado: %i\n", result);
+    printf("Cima: %i\n", result);
 
     return EXIT_SUCCESS;
 }

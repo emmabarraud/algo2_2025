@@ -7,9 +7,15 @@ int main(void) {
     int length = 5;
     int result;
 
+    printf("Arreglo: ");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+
     result = cima_log(a, length);
 
-    printf("Resultado: %i\n", result);
+    printf("Cima en posición: %i (valor: %i)\n", result, a[result]);
 
     return EXIT_SUCCESS;
 }

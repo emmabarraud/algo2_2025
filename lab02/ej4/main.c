@@ -7,14 +7,14 @@
 // arreglo de un millon de elementos:
 #define ARRAY_LENGTH 1000000
 
-double medir_cima(int a[], int length);
+double medir_cima(int a[], int length); //miden tiempo
 double medir_cima_log(int a[], int length);
 
 int main(void) {
     int a[ARRAY_LENGTH];
     int current_length;
 
-    double cpu_time_used;
+    double cpu_time_used; //tiempo
 
     // llenar arreglo con elementos en orden creciente:
     // 0, 1, 2, ..., 999999
@@ -79,3 +79,12 @@ double medir_cima_log(int a[], int length) {
 
     return cpu_time_used;
 }
+
+
+/*Por qué se hacen estas pruebas?
+Para comparar rendimiento. Por ejemplo:
+
+Si cima tiene complejidad lineal (O(n)), va a tardar más cuando el arreglo es más grande.
+
+Si cima_log tiene complejidad logarítmica (O(log n)), el tiempo se mantiene casi constante, incluso con arreglos grandes.
+*/

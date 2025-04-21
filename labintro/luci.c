@@ -11,7 +11,7 @@ void responderPregunta() {
     fgets(pregunta, sizeof(pregunta), stdin);
 
     // Verificamos si la pregunta es la que esperamos
-    if (strstr(pregunta, "Es la luci una puta?") != NULL) {
+    if (strstr(pregunta, "Es maia una puta?") != NULL) {
         printf("¿Con cuántos chabones habló esta semana? ");
         scanf("%d", &cantidadChabones);
         getchar(); // Consumimos el salto de línea que dejó scanf

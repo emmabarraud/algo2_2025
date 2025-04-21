@@ -3,7 +3,7 @@
 #include "cima_log.h"
 #include <assert.h>
 
-bool tiene_cima(int a[], int n) {
+/*bool tiene_cima(int a[], int n) {
     if (n == 1) {
         // Un arreglo de un solo elemento siempre tiene una cima
         return true;
@@ -30,7 +30,7 @@ bool tiene_cima(int a[], int n) {
     // Si hemos llegado al final, entonces hemos encontrado una cima
     return k == n;
 }
-
+*/
 
 /**
  * @brief Dado un arreglo que tiene cima, devuelve la posición de la cima
