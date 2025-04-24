@@ -10,7 +10,7 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "weather_table.h"
-#include "weather_utils.h"
+
 /**
  * @brief print usage help
  * @param[in] program_name Executable name
@@ -71,23 +71,6 @@ int main(int argc, char *argv[]) {
 
     /* show the table in the screen */
     table_dump(table);
-
-    int min_temp = menortempmin(table);
-    printf("Menor temperatura mínima histórica: %d\n", min_temp);
-
-    /* get and print the maximum temperature per year */
-    int max_temp[YEARS];
-    max_temp_max(table, max_temp);
-    for (int i = 0; i < YEARS; i++) {
-        printf("Máxima temperatura del año %d: %d\n", FST_YEAR + i, max_temp[i]);
-    }
-
-    /* get and print the month with max rainfall per year */
-    month_t rainiest_month[YEARS];
-    month_max_rainfall(table, rainiest_month);
-    for (int i = 0; i < YEARS; i++) {
-        printf("Mes con más precipitaciones del año %d: %d\n", FST_YEAR + i, rainiest_month[i] + 1);
-    }
 
     return EXIT_SUCCESS;
 }

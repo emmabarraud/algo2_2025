@@ -18,7 +18,7 @@ typedef enum {january, february, march, april, may, june, july, august, septembe
 
 #define DAYS 28
 
-typedef Weather WeatherTable [YEARS][MONTHS][DAYS]; //la tabla puede devolver toda la estructura de weather
+typedef Weather WeatherTable [YEARS][MONTHS][DAYS];
 
 /**
  * @brief Write the content of the table 'a' into stdout.

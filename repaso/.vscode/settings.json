@@ -4,8 +4,5 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false
-    },
-    "files.associations": {
-        "weather_table.h": "c"
     }
 }

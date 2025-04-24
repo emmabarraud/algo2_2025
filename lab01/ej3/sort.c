@@ -30,21 +30,10 @@ static unsigned int partition(int a[], unsigned int lft, unsigned int rgt) {
 
 static void quick_sort_rec(int a[], unsigned int izq, unsigned int der) {
     if (der > izq) {
-        printf("Arreglo Antes de partition: ");
-        for (unsigned int i = izq; i <= der; i++) {
-            printf("%d ", a[i]);
-        }
-        printf("\n");
-        printf("Indices antes - izq: %u (a[%u] = %u), der: %u (a[%u]) = %u\n", izq, izq, a[izq], der, der, a[der]);
+
 
         unsigned int ppiv = partition(a, izq, der);
 
-        printf("Arreglo Después de partition: ");
-        for (unsigned int i = izq; i <= der; i++) {
-            printf("%d ", a[i]);
-        }
-        printf("\n");
-        printf("Indice del pivote: ppiv = %u, (a[%u]) = %u \n\n", ppiv, ppiv, a[ppiv]);
 
         if (ppiv > 0) {
             quick_sort_rec(a, izq, ppiv - 1);

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Elección del Próximo Papa - Cónclave 2025</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f1e6d8; /* Color champagne para fondo */
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .contenedor {
+      background-color: #ffffff; /* Fondo blanco para la infografía */
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      position: relative;
+    }
+
+    h1 {
+      color: #800000; /* Color borgoña */
+      font-size: 36px;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .infografia {
+      background-color: #f8f2e7; /* Fondo suave champagne para la infografía */
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .infografia h2 {
+      font-size: 28px;
+      color: #800000; /* Color borgoña */
+    }
+
+    .infografia p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .boton {
+      background-color: #800000; /* Borgoña */
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .boton:hover {
+      background-color: #660000; /* Borgoña oscuro */
+    }
+
+    .selector {
+      margin-top: 40px;
+    }
+
+    select {
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 80%;
+      background-color: #f1e6d8; /* Fondo champagne para el selector */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .candidatos-lista {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      max-height: 500px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .candidato {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 15px;
+      background-color: #fafafa;
+      padding: 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .candidato:hover {
+      background-color: #eaeaea;
+    }
+
+    .candidato img {
+      width: 80px;
+      height: auto;
+      margin-right: 20px;
+      border-radius: 5px;
+    }
+
+    .candidato-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .candidato h3 {
+      margin: 0;
+      font-size: 22px;
+      color: #800000; /* Color borgoña */
+    }
+
+    .candidato p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .mensaje {
+      display: none;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Emblem_of_the_Papacy_SE.svg/2048px-Emblem_of_the_Papacy_SE.svg.png" class="logo" alt="Escudo Papal">
+    <h1>Cónclave Extraordinario 2025</h1>
+
+    <div class="infografia">
+      <h2>Proceso de Elección Papal</h2>
+      <p>El cónclave es el proceso mediante el cual se elige al nuevo Papa. Este evento tiene un significado profundo para la Iglesia Católica, ya que determina al líder espiritual de más de mil millones de fieles alrededor del mundo.</p>
+      <p>Durante este evento, se vota hasta que se llegue a una decisión unánime. </p>
+      </p>LAS PERSONAS QUE HAYAN OFICIALIZADO SU CREENCIA MEDIANTE EL SACRAMENTO DE LA CONFIRMACION DEBEN PARTICIPAR OBLIGATORIAMENTE.</p>
+      <p>¡A continuación, podrá conocer a los candidatos que están en la lista para el Cónclave 2025 y tomar su voto!</p>
+    </div>
+
+    <div class="selector">
+      <h2>Seleccione su Candidato</h2>
+      <select id="candidatos-selector">
+        <option value="zuppi">Mateo María Zuppi</option>
+        <option value="tagle">Luis Antonio Gokim Tagle</option>
+        <option value="parolin">Pietro Parolin</option>
+        <option value="erdo">Peter Erdo</option>
+        <option value="avelina">Jean Marc Avelina</option>
+        <option value="lacroix">Gerald Lacroix</option>
+        <option value="hollerich">Jean Claude Hollerich</option>
+        <option value="prevost">Robert Francis Prevost</option>
+        <option value="lopez">Cristóbal López</option>
+        <option value="david">Pablo Virgilio David</option>
+        <option value="scherer">Odilio Pedro Scherer</option>
+        <option value="sarah">Robert Sarah</option>
+      </select>
+
+      <ul class="candidatos-lista" id="candidatos-lista">
+        <li class="candidato" id="candidato-zuppi">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Cardinale_Zuppi_2022.jpg" alt="Mateo María Zuppi">
+          <div class="candidato-info">
+            <h3>Mateo María Zuppi</h3>
+            <p>Italia, 69 años</p>
+            <p>Arzobispo de Bolonia, Italia. Conocido por su enfoque pastoral, cercanía con los pobres y su trabajo por la paz.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-tagle">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Luis_Antonio_Tagle.jpg" alt="Luis Antonio Gokim Tagle">
+          <div class="candidato-info">
+            <h3>Luis Antonio Gokim Tagle</h3>
+            <p>Filipinas, 67 años</p>
+            <p>Cardenal de Manila, conocido por su enfoque pastoral inclusivo y su trabajo en la lucha contra la pobreza y por la justicia social.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-parolin">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Pietro_Parolin_2013.jpg" alt="Pietro Parolin">
+          <div class="candidato-info">
+            <h3>Pietro Parolin</h3>
+            <p>Italia, 70 años</p>
+            <p>Actual Secretario de Estado del Vaticano. Conocido por su diplomacia y liderazgo en los asuntos internacionales de la Iglesia.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-erdo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Peter_Erdo_2016.jpg" alt="Peter Erdo">
+          <div class="candidato-info">
+            <h3>Peter Erdo</h3>
+            <p>Hungría, 71 años</p>
+            <p>Arzobispo de Esztergom-Budapest. Destacado por su cercanía con las familias y su enfoque pastoral en Europa Central y del Este.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-avelina">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Jean_Marc_Avelina.jpg" alt="Jean Marc Avelina">
+          <div class="candidato-info">
+            <h3>Jean Marc Avelina</h3>
+            <p>Francia, 58 años</p>
+            <p>Cardenal de París. Conocido por su enfoque progresista, con énfasis en la ecología y la justicia social.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-lacroix">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Archbishop_Gerald_Lacroix.jpg" alt="Gerald Lacroix">
+          <div class="candidato-info">
+            <h3>Gerald Lacroix</h3>
+            <p>Canadá, 67 años</p>
+            <p>Arzobispo de Quebec. Conocido por su trabajo en la promoción de la evangelización y la vida familiar en América del Norte.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-hollerich">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Jean_Claude_Hollerich_2020.jpg" alt="Jean Claude Hollerich">
+          <div class="candidato-info">
+            <h3>Jean Claude Hollerich</h3>
+            <p>Luxemburgo, 61 años</p>
+            <p>Arzobispo de Luxemburgo. Conocido por su enfoque en la sinodalidad y su trabajo en los ámbitos de la unidad y el diálogo interreligioso.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-prevost">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Robert_Francis_Prevost_2017.jpg" alt="Robert Francis Prevost">
+          <div class="candidato-info">
+            <h3>Robert Francis Prevost</h3>
+            <p>EE. UU., 63 años</p>
+            <p>Obispo de Chiclayo, Perú. Destacado por su enfoque pastoral cercano a los jóvenes y su dedicación al trabajo misionero en América Latina.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-lopez">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Crist%C3%B3bal_L%C3%B3pez_2022.jpg" alt="Cristóbal López">
+          <div class="candidato-info">
+            <h3>Cristóbal López</h3>
+            <p>España, 63 años</p>
+            <p>Arzobispo de Rabat, Marruecos. Conocido por su trabajo en la evangelización en África del Norte y su apoyo a la integración de los inmigrantes.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-david">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Pablo_Virgilio_David.jpg" alt="Pablo Virgilio David">
+          <div class="candidato-info">
+            <h3>Pablo Virgilio David</h3>
+            <p>Filipinas, 58 años</p>
+            <p>Arzobispo de Caloocan. Conocido por su enfoque pastoral en la evangelización urbana y su dedicación a la justicia social.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-scherer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Odilio_Scherer.jpg" alt="Odilio Pedro Scherer">
+          <div class="candidato-info">
+            <h3>Odilio Pedro Scherer</h3>
+            <p>Brasil, 75 años</p>
+            <p>Arzobispo de São Paulo. Conocido por su trabajo pastoral en Brasil y su fuerte defensa de la Iglesia en América Latina.</p>
+          </div>
+        </li>
+        <li class="candidato" id="candidato-sarah">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Robert_Sarah_%28cropped%29.jpg" alt="Robert Sarah">
+          <div class="candidato-info">
+            <h3>Robert Sarah</h3>
+            <p>Guinea, 78 años</p>
+            <p>Cardenal de Conakry. Conocido por sus opiniones conservadoras y su trabajo en la promoción de la liturgia tradicional.</p>
+          </div>
+        </li>
+      </ul>
+      
+
+      <button class="boton" onclick="emitirVoto()">Emitir Voto</button>
+
+      <div class="mensaje" id="mensaje">Su voto ha sido registrado. Que el Espíritu Santo lo acompañe.</div>
+    </div>
+  </div>
+
+  <script>
+    function emitirVoto() {
+      document.getElementById("mensaje").style.display = 'block';
+    }
+
+    // Mostrar la información del candidato seleccionado automáticamente
+    document.getElementById('candidatos-selector').addEventListener('change', function() {
+      const candidato = this.value;
+      const listaCandidatos = document.querySelectorAll('.candidato');
+      listaCandidatos.forEach(item => {
+        item.style.display = item.id === 'candidato-' + candidato ? 'flex' : 'none';
+      });
+    });
+
+    // Mostrar el primer candidato por defecto
+    document.getElementById('candidatos-selector').dispatchEvent(new Event('change'));
+  </script>
+</body>
+</html>

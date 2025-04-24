@@ -34,6 +34,9 @@ bool tiene_cima(int a[], int n) {
             result = false; 
         }
     }
+    // Si el arreglo tiene un solo elemento, se considera que tiene cima
+    // porque no hay elementos para comparar.
+    // Por lo tanto, la cima es el único elemento.
     if (n == 1) {result = true;};
 
     return result;  

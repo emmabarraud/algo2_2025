@@ -30,12 +30,13 @@ bool fstring_eq(fixstring s1, fixstring s2) {
 bool fstring_less_eq(fixstring s1, fixstring s2) {
     unsigned int i = 0;
     bool valor = true; 
-    bool frene = true;
+    bool traba = true;
 
-    while (s1[i] != '\0' && s2[i] != '\0' && frene && i < FIXSTRING_MAX) {
+    
+    while (s1[i] != '\0' && s2[i] != '\0' && traba && i < FIXSTRING_MAX) {
 
         if (s1[i] != s2[i]) {
-            frene = false ; 
+            traba = false ; 
          if (s1[i] < s2[i]) {
             valor = true ; 
         } else {
@@ -45,7 +46,7 @@ bool fstring_less_eq(fixstring s1, fixstring s2) {
     i++;
     }
 
-        if (frene && fstring_length(s1) > fstring_length(s2)) {
+        if (traba && fstring_length(s1) > fstring_length(s2)) {
             valor = false;
         }
         return valor;
