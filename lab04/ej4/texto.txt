@@ -1,0 +1,48 @@
+#include <stdlib.h>
+#include <stdbool.h>
+
+/* Devuelve la longitud de la cadena str */
+size_t string_length(const char *str) {
+    size_t length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
+}
+
+/* Devuelve una nueva cadena que contiene solo los caracteres distintos de c */
+char *string_filter(const char *str, char c) {
+    size_t length = string_length(str);
+    // Primero contar cuántos caracteres son distintos de c
+    size_t new_len = 0;
+    for (size_t i = 0; i < length; i++) {
+        if (str[i] != c) {
+            new_len++;
+        }
+    }
+
+    // Reservar espacio dinámico (+1 para '\0')
+    char *filtered = malloc(sizeof(char) * (new_len + 1));
+    if (filtered == NULL) return NULL;
+
+    size_t j = 0;
+    for (size_t i = 0; i < length; i++) {
+        if (str[i] != c) {
+            filtered[j++] = str[i];
+        }
+    }
+
+    filtered[j] = '\0'; // Agregar fin de cadena
+    return filtered;
+}
+
+/* Indica si la cadena es simétrica (palíndromo) */
+bool string_is_symmetric(const char *str) {
+    size_t len = string_length(str);
+    for (size_t i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1]) {
+            return false;
+        }
+    }
+    return true;
+}

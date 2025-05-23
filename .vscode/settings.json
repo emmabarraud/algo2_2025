@@ -6,6 +6,11 @@
         "scminput": false
     },
     "files.associations": {
-        "weather_table.h": "c"
+        "weather_table.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "span": "c",
+        "stdlib.h": "c"
     }
 }

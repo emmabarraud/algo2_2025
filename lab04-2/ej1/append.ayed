@@ -1,0 +1,11 @@
+// APPEND -> agregar un nuevo nodo al final de la lista
+
+a_node := my_list //apunto al primer elemento
+
+while a_node->next != null do //osea avanzo hasta llegar al ultimo nodo que exista
+    a_node := a_node->next 
+od
+
+alloc(a_node->next) / alloc de nuevo nodo apuntado en next (reservo memoria para un nuevo nodo)
+a_node->next->data := 88 // guardo 88 en el campo  data del nuevo nodo
+a_node->next->next := null //apunto null en el campo next del nuevo nodo (osea es el ultimo de la lista)

@@ -1,0 +1,62 @@
+memoria contigua -> array (entonces puedo acceder a cualquier elemento en orden constant, por ejemplo, elelemento 5 esta 5 elementos mas abajo del elemento 0)
+
+listas-> usa nodos; listas enlazadas. El indexado en una lista se usa con un puntito. No es de ordne constante, es de orden lineal. Tiene que pasar por los anteriores para encontrar el elemento deseado.
+
+ventaja de una lista-> puedo agregar un elemento (orden constante) infinitamente, con arrays necesito mas capacidad total, a veces necesita reservar nueva memoria. 
+
+Al trabajar con cosas con un puntero en el medio, siempre usar un cuaderno primero- no empezar con el codigo porque el 95% de los errores en codigo vienen conceptualmente.
+
+
+typedef struct Node {
+   int data;
+   struct Node* next;
+} Node;
+
+puntero a Null, size de la lista = 0
+
+typedef Node *List;
+puntero a Node (struct Node)
+
+ _____________
+|   codigo    |
+|_____________|
+|   global    | 
+|_____________|
+|    stack    |
+|_____________|
+|    heap     | 
+|_____________|
+
+stack - memoria que el programa necesita
+
+heap - memoria dinamica -> debe liberarse
+malloc memory alloc -> tomauna cantidad (size*)
+free
+calloc clean alloc te da la memoria que pediste y te borra la basura que contenia(inicializa la memoriaen 0 -> toma dos cantidades (size[] size*) 
+
+//malloc y calloc devuelven void*
+apunta a la primer posidcion de memoria dispponible 
+
+ej:
+int p*  = malloc( sizeof(int) *10) -> pero malloc devuelve void* (funciona?? SI -> hay un "casteo implìcito" el void pointer se convierte en la igualdad en un int pointer
+
+
+
+el puntero/direccion de memorua ocupa lo mismo.
+
+  =calloc( 10, sizeof(int)
+  
+  
+free(p) -> cuanto vale luego de hacer esto?? NO va a valer null. Va a valer lomismo que valia antes de llamar a free, pero el sistema operativo ya no apunta a esa direccion de memoria ----
+Si yo la fuera a llamar, me devolvera segmentation fault.
+
+Entonces voy a agregar p= Null
+
+porque no hace esto free? No puede poner en null ya que free p usa una copia de p. (pasaje de parametro poor copia) 
+
+realloc () añade/quita mas memoria 
+ej 
+realloc (p, 
+devuelve una nueva direccionde memoria-> cambiò 
+
+

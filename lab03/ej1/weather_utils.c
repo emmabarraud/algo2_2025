@@ -42,17 +42,16 @@ int menortempmin(WeatherTable table) {
  
 
  void month_max_rainfall(WeatherTable table, month_t output[YEARS]) {
+    month_t month_max = january;
+    unsigned int max_rainfall = 0;
+    // calcular suma de lluvias para el mes `month`
+    unsigned int month_rainfall = 0;
+
     for (unsigned int year = 0; year < YEARS; year++) {
-        month_t month_max = january;
-        unsigned int max_rainfall = 0;
         for (month_t month = january; month <= december; ++month) {
-            // calcular suma de lluvias para el mes `month`
-            unsigned int month_rainfall = 0;
             for (unsigned int day = 0u; day < DAYS; ++day) {
                 month_rainfall += table[year][month][day]._rainfall;
             }
- 
- 
             // ver si es el máximo para este año
             if (month_rainfall > max_rainfall) {
                 // guardar nuevo máximo y su mes
@@ -60,9 +59,6 @@ int menortempmin(WeatherTable table) {
                 month_max = month;
             }
         }
- 
- 
         output[year] = month_max;
     }
  }
- 

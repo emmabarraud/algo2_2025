@@ -1,0 +1,52 @@
+//crear una lista
+
+type node = tuple
+    data: int
+    next: pointer of node
+end tuple
+type list = pointer of node
+
+//cada nodo contiene: un entero(data) y un puntero al siguiente nodo (next)
+
+var i: int
+var my_list: list
+var a_node: pointer of node
+
+i := getenv("LINKED_LIST_LENGTH":int)
+//lee la variable de entorno
+si LINKED_LIST_LENGTH = 3 => i=3
+
+
+alloc(my_list)
+a_node := my_list
+i := i - 1 // first node built 
+crea un nodo my_list y lo apunta a a_node, y decrementa i
+
+//bucle que construye nodos:
+while i > 0 do
+    a_node->data := i*10 //asigna data (i*10) al nodo acual
+    alloc(a_node->next) //crea un nuevo nodo
+    a_node := a_node->next //avanza el nodo actual al siguiente
+    i := i - 1
+od
+
+para i=2 inicialmente, el bucle corre 2 veces:
+primer nodo -> data = 20
+segundo nodo 
+
+
+ultimo nodo:
+
+a_node->data := 0
+a_node->next := null
+a_node := null
+
+asigna data = 0 al ultimo nodo
+
+
+Osea, si LINKED_LIST_LENGTH =3, 
+la lista tiene 3 nodos con los valores:
+ data = 20
+ data = 10
+ data = 0
+en ese orden conectados por next.

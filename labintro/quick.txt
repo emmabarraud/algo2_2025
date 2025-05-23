@@ -1,0 +1,89 @@
+#include <stdio.h>
+
+// Función para intercambiar dos elementos en un arreglo
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Función para particionar el arreglo
+int partition(int arr[], int low, int high) {
+    int pivot = arr[low]; // Elegimos el primer elemento como pivote (simplificado)
+    int i = low + 1;
+    int j = high;
+
+    while (i <= j) {
+        while (i <= high && arr[i] <= pivot) {
+            i++;
+        }
+        while (j >= low && arr[j] > pivot) {
+            j--;
+        }
+        if (i < j) {
+            swap(&arr[i], &arr[j]);
+        } else {
+            break;
+        }
+    }
+    swap(&arr[low], &arr[j]);
+    return j;
+}
+
+// Función recursiva de QuickSort
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        printf("Arreglo después de la partición: ");
+        for (int k = low; k <= high; k++) {
+            printf("%d ", arr[k]);
+        }
+        printf("\n");
+
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+// Función para imprimir el arreglo
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {7, 1, 10, 3, 4, 9, 5};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+
+    int arr2[] = {5, 4, 3, 2, 1};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    int arr3[] = {1, 2, 3, 4, 5};
+    int n3 = sizeof(arr3) / sizeof(arr3[0]);
+
+    printf("Arreglo original 1: ");
+    printArray(arr1, n1);
+    quickSort(arr1, 0, n1 - 1);
+    printf("Arreglo ordenado 1: ");
+    printArray(arr1, n1);
+    printf("\n");
+
+    printf("Arreglo original 2: ");
+    printArray(arr2, n2);
+    quickSort(arr2, 0, n2 - 1);
+    printf("Arreglo ordenado 2: ");
+    printArray(arr2, n2);
+    printf("\n");
+
+    printf("Arreglo original 3: ");
+    printArray(arr3, n3);
+    quickSort(arr3, 0, n3 - 1);
+    printf("Arreglo ordenado 3: ");
+    printArray(arr3, n3);
+    printf("\n");
+
+    return 0;
+}
