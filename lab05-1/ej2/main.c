@@ -38,17 +38,21 @@ char *parse_filepath(int argc, char *argv[]) {
 }
 
 bool matching_parentheses(FILE * file) {
-    counter c = NULL;
+    counter c = counter_init(); //inicializamos el contador
+    if (c == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n");
+        exit(EXIT_FAILURE);
+    }
     bool balanced = true;
     char letter;
 
     while (!feof(file) && balanced) {
         letter = fgetc(file);
-        if (letter == '(') {
+        if (letter == '(') { //si hay un parentesis de apertura, incrementamos el contador
             counter_inc(c);
-        } else if (counter_is_init(c)) {
-            balanced = (letter != ')');
-        } else if (letter == ')') {
+        } else if (counter_is_init(c)) { //si el contador esta en 0, // significa que no hemos encontrado un parentesis de apertura antes
+            balanced = (letter != ')'); // si encontramos un parentesis de cierre sin haber encontrado antes un parentesis de apertura, no hay balance
+        } else if (letter == ')') { //si hay un parentesis de cierre, decrementamos el contador
             counter_dec(c);
         }
     }

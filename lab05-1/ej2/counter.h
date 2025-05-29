@@ -4,8 +4,9 @@
 #include <stdbool.h>
 
 /* counter as a pointer to structs to guarantee encapsulation */
-typedef struct _counter * counter;
-
+typedef struct _counter *counter;
+//*counter es un puntero a _counter y _counter (en la implementación) es una estructura que contiene un entero sin signo.
+// Esto permite que counter sea un tipo de dato abstracto, encapsulando los detalles de implementación y permitiendo que el usuario interactúe con él a través de funciones específicas sin conocer su estructura interna.
 
 /* Constructors */
 counter counter_init(void);
